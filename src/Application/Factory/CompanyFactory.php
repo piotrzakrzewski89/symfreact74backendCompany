@@ -5,26 +5,26 @@ declare(strict_types=1);
 namespace App\Application\Factory;
 
 use App\Application\Dto\CompanyDto;
-use App\Domain\Entity\Admin;
 use App\Domain\Entity\Company;
+use Symfony\Component\Uid\Uuid;
 
 class CompanyFactory
 {
-    public function createFromDto(CompanyDto $dto, Admin $admin): Company
+    public function createFromDto(CompanyDto $dto, Uuid $adminUuid): Company
     {
         $company = new Company();
         $this->mapDtoToEntity($dto, $company);
         $company->setIsDeleted(false);
-        $company->setCreatedBy($admin);
+        $company->setCreatedBy($adminUuid);
 
         return $company;
     }
 
-    public function updateFromDto(CompanyDto $dto, Company $company, Admin $admin): Company
+    public function updateFromDto(CompanyDto $dto, Company $company, Uuid $adminUuid): Company
     {
         $this->mapDtoToEntity($dto, $company);
         $company->setIsDeleted(false);
-        $company->setCreatedBy($admin);
+        $company->setUpdatedBy($adminUuid);
 
         return $company;
     }

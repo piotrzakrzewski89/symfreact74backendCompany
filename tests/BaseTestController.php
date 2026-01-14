@@ -38,15 +38,12 @@ abstract class BaseTestController extends WebTestCase
         $this->factory = $this->createMock(CompanyFactory::class);
         // Zamockowany MessageBus w kontenerze
         $this->messageBus = $this->createMock(MessageBusInterface::class);
-        $this->messageBus
-            ->method('dispatch')
-            ->willReturnCallback(fn($event) => new \Symfony\Component\Messenger\Envelope($event));
 
         $this->client->getContainer()->set(MessageBusInterface::class, $this->messageBus);
         $this->client->disableReboot();
         
         $this->companyMailer = $this->createMock(CompanyMailer::class);
-        $this->service = new CompanyService($this->repo, $this->em, $this->factory,  $this->messageBus, $this->companyMailer);
+        $this->service = new CompanyService($this->repo, $this->em, $this->factory, $this->companyMailer);
         // Przywróć stan bazy
         $connection->executeStatement('TRUNCATE TABLE "company" RESTART IDENTITY CASCADE');
     }

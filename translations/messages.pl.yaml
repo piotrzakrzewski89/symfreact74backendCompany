@@ -1,24 +1,74 @@
-email.company.created.subject: "Firma została utworzona"
+email.company.created.subject: "Nowa firma utworzona"
 email.company.created.body: |
-  <p>Firma <strong>%longName%</strong> została utworzona w systemie.</p>
-  <p><strong>Email kontaktowy:</strong> %email%</p>
-  <p><strong>Miasto:</strong> %city%</p>
+  <div style="background: #d4edda; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h2 style="color: #155724; margin: 0 0 10px 0;">🎉 Gratulacje!</h2>
+    <p style="font-size: 16px; margin-bottom: 15px;">Firma <strong style="color: #155724;">%longName%</strong> została pomyślnie utworzona w systemie.</p>
+    
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #155724;">
+    <p style="margin: 0;"><strong>📧 Dane kontaktowe:</strong></p>
+    <div style="margin-left: 20px;">
+      <p><strong>Email:</strong> %email%</p>
+      <p><strong>Miasto:</strong> %city%</p>
+    </div>
+  </div>
+  
+  <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 15px;">
+    <p style="margin: 0;"><strong>ℹ️ Informacje:</strong></p>
+    <p style="margin-left: 20px;">Możesz teraz zarządzać firmą przez panel administracyjny.</p>
+  </div>
 
-email.company.updated.subject: "Firma została zaktualizowana"
+email.company.updated.subject: "Aktualizacja danych firmy"
 email.company.updated.body: |
-  <p>Firma <strong>%longName%</strong> została zmodyfikowana w systemie.</p>
-  <p><strong>Email kontaktowy:</strong> %email%</p>
-  <p><strong>Miasto:</strong> %city%</p>
+  <div style="background: #fff3cd; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h2 style="color: #0d6efd; margin: 0 0 10px 0;">📝 Dane firmy zaktualizowane</h2>
+    <p style="font-size: 16px; margin-bottom: 15px;">Firma <strong style="color: #0d6efd;">%longName%</strong> została pomyślnie zaktualizowana.</p>
+    
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #0d6efd;">
+    <p style="margin: 0;"><strong>📧 Zaktualizowane dane:</strong></p>
+    <div style="margin-left: 20px;">
+      <p><strong>Email:</strong> %email%</p>
+      <p><strong>Miasto:</strong> %city%</p>
+    </div>
+  </div>
 
-email.company.deleted.subject: "Firma została usunięta"
+email.company.deleted.subject: "Firma usunięta"
 email.company.deleted.body: |
-  <p>Firma <strong>%longName%</strong> została usunięta w systemie.</p>
-  <p><strong>Email kontaktowy:</strong> %email%</p>
-  <p><strong>Miasto:</strong> %city%</p>
+  <div style="background: #f8d7da; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h2 style="color: #721c24; margin: 0 0 10px 0;">🗑️ Firma usunięta</h2>
+    <p style="font-size: 16px; margin-bottom: 15px;">Firma <strong style="color: #721c24;">%longName%</strong> została usunięta z systemu.</p>
+    
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #721c24;">
+    <p style="margin: 0;"><strong>📋 Podsumowanie:</strong></p>
+    <div style="margin-left: 20px;">
+      <p><strong>Email:</strong> %email%</p>
+      <p><strong>Miasto:</strong> %city%</p>
+    </div>
+  </div>
+  
+  <div style="background: #fff3cd; padding: 15px; border-radius: 5px; margin-top: 15px;">
+    <p style="margin: 0;"><strong>ℹ️ Informacje:</strong></p>
+    <p style="margin-left: 20px;">Dane firmy zostały zachowane w archiwum.</p>
+  </div>
 
-email.company.changeActive.subject: "Firma została zaktualizowana - zmiana statusu"
+email.company.changeActive.subject: "Zmiana statusu firmy"
 email.company.changeActive.body: |
-  <p>Firma <strong>%longName%</strong> została zmodyfikowana w systemie. Została zmieniona aktywność firmy.</p>
-  <p><strong>Email kontaktowy:</strong> %email%</p>
-  <p><strong>Miasto:</strong> %city%</p>
+  <div style="background: #e7f3ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+    <h2 style="color: #0969da; margin: 0 0 10px 0;">🔄 Zmiana statusu firmy</h2>
+    <p style="font-size: 16px; margin-bottom: 15px;">Firma <strong style="color: #0969da;">%longName%</strong> zmieniła status.</p>
+    
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; border-left: 4px solid #0969da;">
+    <p style="margin: 0;"><strong>📊 Nowy status:</strong></p>
+    <div style="margin-left: 20px; font-size: 18px; font-weight: bold;">
+      {% if isActive == 'true' %}
+        <span style="color: #28a745;">✅ AKTYWNA</span>
+      {% else %}
+        <span style="color: #dc3545;">❌ NIEAKTYWNA</span>
+      {% endif %}
+    </div>
+  </div>
+  
+  <div style="background: #f8f9fa; padding: 15px; border-radius: 5px; margin-top: 15px;">
+    <p style="margin: 0;"><strong>ℹ️ Informacje:</strong></p>
+    <p style="margin-left: 20px;">Zmiany statusu można dokonać w panelu administracyjnym.</p>
+  </div>
 

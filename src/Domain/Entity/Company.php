@@ -52,9 +52,9 @@ class Company
     #[ORM\Column(nullable: true)]
     private ?DateTimeImmutable $updatedAt;
     #[ORM\Column(type: 'uuid', nullable: true)]
-    private Uuid  $createdBy;
+    private ?Uuid $createdBy;
     #[ORM\Column(type: 'uuid', nullable: true)]
-    private ?Uuid  $updatedBy;
+    private ?Uuid $updatedBy;
     #[ORM\Column]
     private bool $isActive;
     #[ORM\Column]
@@ -67,7 +67,7 @@ class Company
     public function __construct()
     {
         $this->uuid = Uuid::v4();
-        $this->createdAt = new \DateTimeImmutable();
+        $this->createdAt = new DateTimeImmutable();
         $this->isDeleted = false;
         $this->isSystem = false;
     }
@@ -76,23 +76,23 @@ class Company
     {
         $this->isActive = true;
         $this->updatedBy = $adminUuid;
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
     }
 
     public function deactivate(Uuid $adminUuid): void
     {
         $this->isActive = false;
         $this->updatedBy = $adminUuid;
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
     }
 
     public function softDelete(Uuid $adminUuid): void
     {
         $this->isDeleted = true;
         $this->isActive = false;
-        $this->deletedAt = new \DateTimeImmutable();
+        $this->deletedAt = new DateTimeImmutable();
         $this->updatedBy = $adminUuid;
-        $this->updatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new DateTimeImmutable();
     }
 
     public function getId(): ?int

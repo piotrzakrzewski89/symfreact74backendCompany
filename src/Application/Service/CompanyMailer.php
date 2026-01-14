@@ -65,6 +65,7 @@ class CompanyMailer
                 '%longName%' => $company->getLongName(),
                 '%email%' => $company->getEmail(),
                 '%city%' => $company->getCity(),
+                '%isActive%' => $company->isActive() ? 'true' : 'false',
             ]
         );
 

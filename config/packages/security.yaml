@@ -18,4 +18,5 @@ security:
             stateless: true
 
     access_control:
+        - { path: ^/api/company/security/check-company, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: ROLE_ADMIN_CMS }

@@ -45,7 +45,7 @@ class CompanyControllerTest extends BaseTestController
             'email' => 'firma@example.com',
             'shortName' => 'ZZ',
             'longName' => 'Zmodyfikowana Sp. z o.o.',
-            'taxNumber' => 1987654321,
+            'taxNumber' => '1987654321',
             'country' => 'Polska',
             'city' => 'Warszawa',
             'postalCode' => '00-001',
@@ -169,7 +169,7 @@ class CompanyControllerTest extends BaseTestController
             'firma@example.com',
             'FN',
             'Firma Nowa',
-            1234567890,
+            '1234567890',
             'Polska',
             'Warszawa',
             '00-001',
@@ -191,7 +191,7 @@ class CompanyControllerTest extends BaseTestController
             'zly-email',
             'FN',
             'Firma Nowa',
-            1234567890,
+            '1234567890',
             'Polska',
             'Warszawa',
             '00-001',
@@ -213,7 +213,7 @@ class CompanyControllerTest extends BaseTestController
             '', // brak emaila
             '', // brak shortName
             '', // brak longName
-            0, // brak taxNumber
+            '', // brak taxNumber
             '', // brak country
             '', // brak city
             '', // brak postalCode
@@ -269,7 +269,7 @@ class CompanyControllerTest extends BaseTestController
             'email' => 'duplicate@example.com',
             'shortName' => 'F1',
             'longName' => 'Firma 1',
-            'taxNumber' => 1234567890,
+            'taxNumber' => '1234567890',
             'country' => 'PL',
             'city' => 'Warszawa',
             'postalCode' => '00-001',
@@ -312,7 +312,7 @@ class CompanyControllerTest extends BaseTestController
             'email' => 'firma2@example.com',
             'shortName' => 'F1', // istniejący shortName
             'longName' => 'Firma 2 zmieniona',
-            'taxNumber' => 1234567890,
+            'taxNumber' => '1234567890',
             'country' => 'Polska',
             'city' => 'Miasto',
             'postalCode' => '00-000',
@@ -386,7 +386,7 @@ class CompanyControllerTest extends BaseTestController
             'email' => 'firma@example.com',
             'shortName' => 'FN',
             'longName' => 'Firma Nowa',
-            'taxNumber' => 1234567890,
+            'taxNumber' => '1234567890',
             'country' => 'Polska',
             'city' => 'Warszawa',
             'postalCode' => '00-001',
@@ -414,7 +414,7 @@ class CompanyControllerTest extends BaseTestController
             'uuid' => Uuid::v4()->toRfc4122(),
             'shortName' => 'FN',
             'longName' => 'Firma Nowa',
-            'taxNumber' => 1234567890,
+            'taxNumber' => '1234567890',
             'country' => 'Polska',
             'city' => 'Warszawa',
             'postalCode' => '00-001',
@@ -451,7 +451,7 @@ class CompanyControllerTest extends BaseTestController
             'email' => 'notfound@example.com',
             'shortName' => 'NF',
             'longName' => 'Not Found',
-            'taxNumber' => 1111111111,
+            'taxNumber' => '1111111111',
             'country' => 'Polska',
             'city' => 'Warszawa',
             'postalCode' => '00-001',
@@ -519,7 +519,7 @@ class CompanyControllerTest extends BaseTestController
             'test@example.com',
             'SHORT',
             'Long Name',
-            1234567890,
+            '1234567890',
             'Polska',
             'Warszawa',
             '00-001',
@@ -705,7 +705,7 @@ class CompanyControllerTest extends BaseTestController
                 'email' => 'firma@example.com',
                 'shortName' => 'TT',
                 'longName' => 'Testowa Sp. z o.o.',
-                'taxNumber' => 1234567890,
+                'taxNumber' => '1234567890',
                 'country' => 'Polska',
                 'city' => 'Wrocław',
                 'postalCode' => '50-001',

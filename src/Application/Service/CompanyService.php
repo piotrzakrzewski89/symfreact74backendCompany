@@ -6,10 +6,10 @@ namespace App\Application\Service;
 
 use App\Application\Dto\CompanyDto;
 use App\Application\Factory\CompanyFactory;
-use App\Domain\Entity\Admin;
 use App\Domain\Entity\Company;
 use App\Domain\Repository\CompanyRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Uid\Uuid;
 
 class CompanyService
 {
@@ -32,7 +32,8 @@ class CompanyService
             throw new \DomainException('Firma o tej krótkiej nazwie już istnieje.');
         }
 
-        $company = $this->companyFactory->createFromDto($dto, $this->getAdmin($adminId));
+        $adminUuid = is_string($adminId) ? Uuid::fromString($adminId) : Uuid::v4();
+        $company = $this->companyFactory->createFromDto($dto, $adminUuid);
 
         $this->em->persist($company);
         $this->em->flush();
@@ -62,7 +63,8 @@ class CompanyService
             throw new \DomainException('Firma o tej krótkiej nazwie już istnieje.');
         }
 
-        $company = $this->companyFactory->updateFromDto($dto, $company, $this->getAdmin($adminId));
+        $adminUuid = is_string($adminId) ? Uuid::fromString($adminId) : Uuid::v4();
+        $company = $this->companyFactory->updateFromDto($dto, $company, $adminUuid);
 
         $this->em->persist($company);
         $this->em->flush();
@@ -79,12 +81,12 @@ class CompanyService
             return null;
         }
 
-        $admin = $this->getAdmin($adminId);
+        $adminUuid = is_string($adminId) ? Uuid::fromString($adminId) : Uuid::v4();
 
         if ($company->isActive()) {
-            $company->deactivate($admin);
+            $company->deactivate($adminUuid);
         } else {
-            $company->activate($admin);
+            $company->activate($adminUuid);
         }
 
         $this->em->flush();
@@ -101,8 +103,8 @@ class CompanyService
             return null;
         }
 
-        $admin = $this->getAdmin($adminId);
-        $company->softDelete($admin);
+        $adminUuid = is_string($adminId) ? Uuid::fromString($adminId) : Uuid::v4();
+        $company->softDelete($adminUuid);
 
         $this->em->flush();
 
@@ -111,8 +113,4 @@ class CompanyService
         return $company;
     }
 
-    private function getAdmin(int $adminId): Admin
-    {
-        return $this->em->getReference(Admin::class, $adminId);
-    }
 }
