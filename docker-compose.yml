@@ -15,6 +15,8 @@ services:
   company-www:
     build: ./docker/www
     container_name: company-www
+    depends_on:
+      - php
     ports:
       - 8083:80
     volumes:
@@ -28,9 +30,9 @@ services:
       context: ./docker/postgres
     container_name: company-db
     environment:
-      - POSTGRES_USER=company
-      - POSTGRES_PASSWORD=company
-      - POSTGRES_DB=company
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - company_db_data:/var/lib/postgresql/data
     ports:
@@ -46,7 +48,7 @@ services:
       - -c
       - ssl_key_file=/var/lib/postgresql/certs/server.key
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U company"]
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
       interval: 10s
       timeout: 5s
       retries: 5
